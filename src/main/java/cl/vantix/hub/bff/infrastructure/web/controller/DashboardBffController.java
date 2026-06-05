@@ -22,4 +22,10 @@ public class DashboardBffController {
         return BffControllerHelper.toResponse(
                 client.get(base + "/convocatoria/" + id, BffControllerHelper.extractJwt(req)));
     }
+
+    @GetMapping("/global")
+    public ResponseEntity<String> getDashboardGlobal(HttpServletRequest req) {
+        return BffControllerHelper.toResponse(
+                client.get(base + "/global", BffControllerHelper.extractJwt(req)));
+    }
 }
