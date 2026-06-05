@@ -34,4 +34,10 @@ public class NotificacionBffController {
         return BffControllerHelper.toResponse(
                 client.put(base + "/leer-todas", null, BffControllerHelper.extractJwt(req)));
     }
+
+    @PostMapping("/masiva")
+    public ResponseEntity<String> enviarMasiva(@org.springframework.web.bind.annotation.RequestBody String body, HttpServletRequest req) {
+        return BffControllerHelper.toResponse(
+                client.post(base + "/masiva", body, BffControllerHelper.extractJwt(req)));
+    }
 }
