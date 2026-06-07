@@ -38,6 +38,13 @@ public class AuthBffUseCaseImpl implements AuthBffUseCase {
         body.put("email",           request.email());
         body.put("password",        plainPassword);
         body.put("telefono",        request.telefono());
+        if (request.empresaNombre() != null && !request.empresaNombre().isBlank()) {
+            body.put("empresaNombre",    request.empresaNombre());
+            body.put("empresaRut",       request.empresaRut());
+            body.put("empresaDireccion", request.empresaDireccion());
+            body.put("empresaTelefono",  request.empresaTelefono());
+            body.put("empresaEmail",     request.empresaEmail());
+        }
         return msHubClient.post(authPath + "/register", body, null);
     }
 
