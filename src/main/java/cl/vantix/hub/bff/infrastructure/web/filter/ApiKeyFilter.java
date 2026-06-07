@@ -62,7 +62,7 @@ public class ApiKeyFilter extends GenericFilter {
         return path.contains("/swagger-ui")
             || path.contains("/v3/api-docs")
             || path.contains("/actuator")
-            || path.startsWith("/instituciones/slug/")
-            || path.startsWith("/configuracion/public/");
+            || path.contains("/instituciones/slug/")
+            || path.contains("/configuracion/public/");
     }
 }
