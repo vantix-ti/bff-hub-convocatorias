@@ -61,6 +61,8 @@ public class ApiKeyFilter extends GenericFilter {
     private boolean isPublicPath(String path) {
         return path.contains("/swagger-ui")
             || path.contains("/v3/api-docs")
-            || path.contains("/actuator");
+            || path.contains("/actuator")
+            || path.startsWith("/instituciones/slug/")
+            || path.startsWith("/configuracion/public/");
     }
 }
