@@ -1,8 +1,5 @@
 package cl.vantix.hub.bff.infrastructure.web.controller;
 
-import cl.vantix.hub.bff.domain.model.LoginBffRequest;
-import cl.vantix.hub.bff.domain.model.RegisterBffRequest;
-import cl.vantix.hub.bff.domain.model.ResetPasswordBffRequest;
 import cl.vantix.hub.bff.domain.model.*;
 import cl.vantix.hub.bff.domain.port.in.AuthBffUseCase;
 import cl.vantix.hub.bff.domain.port.out.CryptoPort;
@@ -12,15 +9,12 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
-@RestController
-@RequestMapping("/auth")
-@RequiredArgsConstructor
+@RestController @RequestMapping("/auth") @RequiredArgsConstructor
 public class AuthBffController {
 
     private final AuthBffUseCase authUseCase;
     private final CryptoPort cryptoPort;
 
-    /** Retorna la clave pública RSA para que el frontend cifre las contraseñas. */
     @GetMapping("/public-key")
     public ResponseEntity<Map<String, String>> publicKey() {
         return ResponseEntity.ok(Map.of("publicKey", cryptoPort.getPublicKeyBase64()));
@@ -34,6 +28,11 @@ public class AuthBffController {
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody RegisterBffRequest request) {
         return BffControllerHelper.toResponse(authUseCase.register(request));
+    }
+
+    @PostMapping("/register-gestor")
+    public ResponseEntity<String> registerGestor(@RequestBody RegisterGestorBffRequest request) {
+        return BffControllerHelper.toResponse(authUseCase.registerGestor(request));
     }
 
     @GetMapping("/confirmar-email")
