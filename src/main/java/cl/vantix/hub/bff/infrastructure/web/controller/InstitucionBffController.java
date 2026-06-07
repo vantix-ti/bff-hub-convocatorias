@@ -42,4 +42,9 @@ public class InstitucionBffController {
         return BffControllerHelper.toResponse(
                 client.put(base + "/" + id, body, BffControllerHelper.extractJwt(req)));
     }
+
+    @GetMapping("/slug/{slug}")
+    public ResponseEntity<String> obtenerPorSlug(@PathVariable String slug, HttpServletRequest req) {
+        return BffControllerHelper.toResponse(client.get(base + "/slug/" + slug, null));
+    }
 }

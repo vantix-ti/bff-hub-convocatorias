@@ -30,4 +30,9 @@ public class ConfiguracionBffController {
         return BffControllerHelper.toResponse(
                 client.put(base + "/" + institucionId, body, BffControllerHelper.extractJwt(req)));
     }
+
+    @GetMapping("/public/{slug}")
+    public ResponseEntity<String> obtenerPublico(@PathVariable String slug, HttpServletRequest req) {
+        return BffControllerHelper.toResponse(client.get(base + "/public/" + slug, null));
+    }
 }

@@ -34,6 +34,8 @@ public class SecurityConfig {
                 // Swagger y actuator sin API-Key (acceso interno/dev)
                 .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
                 .requestMatchers("/actuator/**").permitAll()
+                .requestMatchers("/instituciones/slug/**").permitAll()
+                .requestMatchers("/configuracion/public/**").permitAll()
                 // Todo lo demás pasa por ApiKeyFilter
                 .anyRequest().permitAll()
             )
