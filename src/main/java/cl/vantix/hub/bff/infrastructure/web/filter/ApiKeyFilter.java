@@ -63,6 +63,8 @@ public class ApiKeyFilter extends GenericFilter {
             || path.contains("/v3/api-docs")
             || path.contains("/actuator")
             || path.contains("/instituciones/slug/")
-            || path.contains("/configuracion/public/");
+            || path.contains("/configuracion/public/")
+            || path.matches(".*/convocatorias(/\\d+)?$")   // GET /convocatorias y /convocatorias/{id}
+            || path.contains("/archivos/");
     }
 }
